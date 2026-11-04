@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,32 +17,32 @@
       <span class="brand-rule" aria-hidden="true"></span>
       <span class="brand-name">Roast Room</span>
     </div>
-    <ol class="stepper" id="stepper" aria-label="Council progress">
+    <ol class="stepper" id="stepper" aria-label="Ablauf des Councils">
       <li data-step="setup">Brief</li>
-      <li data-step="round1">Openings</li>
-      <li data-step="cruxes">Fault lines</li>
-      <li data-step="round2">Debate</li>
-      <li data-step="round3">Vote</li>
-      <li data-step="verdict">Verdict</li>
+      <li data-step="round1">Eröffnung</li>
+      <li data-step="cruxes">Streitpunkte</li>
+      <li data-step="round2">Debatte</li>
+      <li data-step="round3">Abstimmung</li>
+      <li data-step="verdict">Urteil</li>
     </ol>
     <div class="top-actions">
-      <span class="usage" id="usage" title="Tokens used by this app since it started"></span>
-      <button class="ghost" id="guideBtn" type="button">How it works</button>
-      <button class="ghost" id="historyBtn" type="button">Past sessions</button>
-      <button class="ghost" id="newBtn" type="button" hidden>New question</button>
+      <span class="usage" id="usage" title="Tokens, die diese App seit dem Start verbraucht hat"></span>
+      <button class="ghost" id="guideBtn" type="button">So funktioniert es</button>
+      <button class="ghost" id="historyBtn" type="button">Frühere Councils</button>
+      <button class="ghost" id="newBtn" type="button" hidden>Neue Frage</button>
     </div>
   </header>
 
   <div class="topic" id="topic" hidden>
     <div class="topic-main">
-      <div class="label">On the table</div>
+      <div class="label">Auf dem Tisch</div>
       <h1 id="topicTitle"></h1>
     </div>
     <div class="options" id="options"></div>
   </div>
 
   <main class="layout">
-    <section class="stage-wrap" aria-label="The council table">
+    <section class="stage-wrap" aria-label="Der Council-Tisch">
       <div class="stage" id="stage">
         <div class="wall" aria-hidden="true"></div>
         <div class="spot" id="spot" aria-hidden="true"></div>
@@ -53,23 +53,23 @@
 
         <div class="center" id="center">
           <div class="waiting" id="waiting" hidden>
-            <span class="pulse"><i></i>The room is open</span>
-            <h2 data-type>Bring a decision to the Roast Room</h2>
-            <p>In Claude Code, type the line below with your decision. The council shows up here and argues it out live.</p>
-            <code>/roast-room should I ...</code>
-            <div class="row"><button class="ghost" type="button" id="waitGuide">What to put in your question</button><button class="ghost" type="button" id="waitHistory">Watch a past council</button></div>
+            <span class="pulse"><i></i>Der Raum ist offen</span>
+            <h2 data-type>Bring eine Entscheidung in den Roast Room</h2>
+            <p>Gib in Claude Code die Zeile unten mit deiner Entscheidung ein. Der Council erscheint hier und streitet live darüber.</p>
+            <code>/roast-room Soll ich ...</code>
+            <div class="row"><button class="ghost" type="button" id="waitGuide">Was in deine Frage gehört</button><button class="ghost" type="button" id="waitHistory">Früheren Council ansehen</button></div>
           </div>
 
           <form class="composer" id="composer" hidden>
-            <h2 data-type>What decision do you need help with?</h2>
-            <textarea id="prompt" rows="3" placeholder="Give them the decision, your options, a few numbers (revenue, cash, team), and which way you're leaning." required minlength="10"></textarea>
+            <h2 data-type>Bei welcher Entscheidung brauchst du Hilfe?</h2>
+            <textarea id="prompt" rows="3" placeholder="Nenne die Entscheidung, deine Optionen, ein paar Zahlen (Umsatz, Geld, Team) und wozu du neigst." required minlength="10"></textarea>
             <div class="samples" id="samples"></div>
             <div class="composer-row">
-              <div class="mode" role="radiogroup" aria-label="Council size">
-                <label><input type="radio" name="mode" value="full" checked><span>Full council <small>7 seats, 3 rounds</small></span></label>
-                <label><input type="radio" name="mode" value="quick"><span>Quick <small>4 seats, 2 rounds</small></span></label>
+              <div class="mode" role="radiogroup" aria-label="Größe des Councils">
+                <label><input type="radio" name="mode" value="full" checked><span>Voller Council <small>7 Sitze, 3 Runden</small></span></label>
+                <label><input type="radio" name="mode" value="quick"><span>Schnell <small>4 Sitze, 2 Runden</small></span></label>
               </div>
-              <button class="convene" type="submit" id="convene">Convene the council</button>
+              <button class="convene" type="submit" id="convene">Council einberufen</button>
             </div>
           </form>
 
@@ -89,7 +89,7 @@
             <p class="wc-sub" id="wcSub"></p>
             <p class="wc-muse" id="wcMuse"></p>
             <div class="wc-bar"><i id="wcBar"></i></div>
-            <p class="wc-nudge" id="wcNudge" hidden>Nothing new for a while? Check Claude Code. It may be waiting for you to answer or approve something.</p>
+            <p class="wc-nudge" id="wcNudge" hidden>Länger nichts Neues? Schau in Claude Code. Vielleicht wartet es auf eine Antwort oder Freigabe von dir.</p>
           </div>
 
           <div class="cruxes" id="cruxes" hidden></div>
@@ -98,20 +98,20 @@
 
         <div class="playbar" id="playbar" hidden>
           <span class="queue" id="queueInfo"></span>
-          <div class="speed" role="radiogroup" aria-label="Playback speed">
+          <div class="speed" role="radiogroup" aria-label="Abspielgeschwindigkeit">
             <button type="button" data-speed="1" aria-pressed="true">1x</button>
             <button type="button" data-speed="1.6" aria-pressed="false">1.6x</button>
             <button type="button" data-speed="2.5" aria-pressed="false">2.5x</button>
           </div>
-          <button type="button" class="skip" id="skipBtn">Skip ahead</button>
+          <button type="button" class="skip" id="skipBtn">Vorspulen</button>
         </div>
       </div>
     </section>
 
-    <aside class="panel" aria-label="Key points">
-      <div class="panel-head" id="panelHead">Key points</div>
+    <aside class="panel" aria-label="Kernpunkte">
+      <div class="panel-head" id="panelHead">Kernpunkte</div>
       <div class="tabpanel" id="feed">
-        <div class="empty">One line per seat as the council talks. Click a seat to read its full card.</div>
+        <div class="empty">Eine Zeile pro Sitz, während der Council spricht. Klick auf einen Sitz, um seine ganze Karte zu lesen.</div>
       </div>
     </aside>
   </main>
@@ -122,23 +122,23 @@
 
   <dialog id="cardDialog" class="card-dialog">
     <div id="cardBody"></div>
-    <form method="dialog"><button class="ghost">Close</button></form>
+    <form method="dialog"><button class="ghost">Schließen</button></form>
   </dialog>
 
   <dialog id="guideDialog" class="card-dialog">
     <div id="guideBody"></div>
-    <form method="dialog"><button class="ghost">Close</button></form>
+    <form method="dialog"><button class="ghost">Schließen</button></form>
   </dialog>
 
   <dialog id="historyDialog" class="card-dialog">
-    <h3>Past sessions</h3>
-    <p class="muted">Replay a council exactly as it happened.</p>
+    <h3>Frühere Councils</h3>
+    <p class="muted">Spiel einen Council genau so ab, wie er gelaufen ist.</p>
     <ul class="history" id="historyList"></ul>
-    <form method="dialog"><button class="ghost">Close</button></form>
+    <form method="dialog"><button class="ghost">Schließen</button></form>
   </dialog>
 
   <div class="toast" id="toast" hidden></div>
-  <p class="disclaimer">Simulated advisors built from each person's public work and drawn as caricatures. They are not the people and do not speak for them.</p>
+  <p class="disclaimer">Simulierte Berater, gebaut aus dem öffentlichen Werk der jeweiligen Person und als Karikatur gezeichnet. Sie sind nicht die Personen und sprechen nicht für sie.</p>
 
   <script src="/app.js" type="module"></script>
 </body>
