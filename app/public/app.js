@@ -234,7 +234,7 @@ function layoutStage() {
     // the captions start below the lowest nameplate they could collide with
     const inner = (n > 2 ? state.table.slice(1, -1) : state.table).map((k) => $(`#plate-${k}`));
     const top = Math.max(...inner.map((p) => p.offsetTop + p.offsetHeight / 2)) + H * 0.035;
-    Object.assign(c.style, { left: `${W * 0.2}px`, width: `${W * 0.6}px`, top: `${top}px`, height: `${H - top - H * 0.09}px` });
+    Object.assign(c.style, { left: `${W * 0.2}px`, width: `${W * 0.6}px`, top: `${top}px`, height: `${H - top - ($("#playbar").hidden ? H * 0.03 : H * 0.09)}px` });
   }
   const sp = state.speaking ? state.geo[state.speaking] : null;
   if (sp) moveSpot(state.speaking);
@@ -781,6 +781,7 @@ function onVerdict(ev) {
   $("#plateOpen").addEventListener("click", () => ($("#verdictSheet").hidden = false));
   $("#plateReplay").addEventListener("click", () => replay(state.session));
   $("#playbar").hidden = true;
+  layoutStage(); // the verdict can use the room the playbar left
   const f = document.createElement("div");
   f.className = "feed-note";
   f.innerHTML = `<b>Urteil: ${esc(labelDe(v.label))}.</b> ${esc(firstSentences(clean(v.call), 160))}`;
